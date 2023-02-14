@@ -14,3 +14,14 @@ Existing HTML to JSX online transformers aren't compatible for SolidJS, it trans
 2. Incorrectly changes css variables names in style attributes.
 
 Solid attempts to stay as close to HTML standards as possible, allowing copy and paste from answers on Stack Overflow or from template builders from your designers. This [site](https://solidjs-community.github.io/html-to-solidjsx) brings that goal even closer while providing customizations such as the option to camelCase attributes or having style attribute value set as a CSS object or string.
+
+## Credits / Technologies used
+
+- [solid-start](https://start.solidjs.com/): The meta-framework
+- [solid-js](https://github.com/solidjs/solid/): The view library
+- [codemirror](https://codemirror.net/): The in-browser code editor
+- [solid-codemirror](https://github.com/riccardoperra/solid-codemirror): SolidJS bindings for codemirror
+- [html-to-jsx](https://www.npmjs.com/package/html-to-jsx)(modified for Solid JSX compatiblity): A html to jsx compiler
+- [UnoCSS](https://uno.antfu.me/): The CSS framework
+- [vite](https://vitejs.dev/): The module bundler
+- [pnpm](https://pnpm.js.org/): Fast, disk space efficient package manager
