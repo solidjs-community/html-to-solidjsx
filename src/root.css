@@ -1,0 +1,101 @@
+@font-face {
+  font-family: "Gordita";
+  src: url("/fonts/Gordita/Gordita-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Gordita";
+  src: url("./fonts/Gordita/Gordita-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Gordita";
+  src: url("./fonts/Gordita/Gordita-Medium.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+}
+
+html,
+body,
+#root,
+main {
+  height: 100%;
+  /* TODO: does overflow on body prevent native swipdown reloading */
+  /* overflow: clip; */
+}
+
+.dark {
+  color-scheme: dark;
+}
+
+.dark body {
+  @apply bg-dark;
+}
+
+/* TODO */
+/* arbitrary-variant fails to compile in unocss, so hardcoded the class here */
+.\[\&_\[data-icon-text\]\]\:text-white [data-icon-text] {
+  --un-text-opacity: 1;
+  color: rgba(255, 255, 255, var(--un-text-opacity));
+}
+
+/* CodeMirror */
+.cm-gutter {
+  @apply bg-white dark:bg-dark;
+}
+.cm-gutters:after {
+  @apply absolute content-empty block top-0 -right-12px bottom-0 w-12px bg-white dark:bg-dark;
+}
+.cm-editor {
+  @apply h-full;
+}
+.cm-content {
+  @apply text-13px md:text-14px;
+}
+.cm-activeLineGutter {
+  @apply text-#000! dark:text-light!;
+}
+
+.select {
+  border: 2px solid #000;
+  border-radius: 6px;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23adb5bd' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+  background-size: 16px 12px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  padding: 0.375rem 2.25rem 0.375rem 0.75rem;
+}
+
+.switch {
+  @apply bg-#888 dark:bg-#666;
+  font-size: 20px;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='%23fff'/%3e%3c/svg%3e");
+  background-position: left center;
+  border-radius: 2em;
+  width: 2em;
+  height: 1em;
+  margin-top: 0.1em;
+  vertical-align: top;
+  background-repeat: no-repeat;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  -webkit-print-color-adjust: exact;
+  color-adjust: exact;
+  print-color-adjust: exact;
+  transition: background-position 0.15s ease-in-out;
+}
+
+.switch:checked {
+  @apply bg-solid-light border-solid-light;
+  /* background-color: #0d6efd;
+  border-color: #0d6efd; */
+  background-position: right center;
+}

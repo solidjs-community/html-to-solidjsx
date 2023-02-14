@@ -1,0 +1,24 @@
+name: CI
+
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: install
+        run: npm i --legacy-peer-deps
+
+      - name: build
+        run: npm run build
+
+      - name: deploy pages
+        uses: JamesIves/github-pages-deploy-action@v4.4.1
+        with:
+          branch: gh-pages
+          folder: dist/public
