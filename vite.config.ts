@@ -3,7 +3,6 @@ import { defineConfig } from "vite";
 import UnoCss from "unocss/vite";
 
 export default defineConfig({
-  // comment out `base` when on development
   base: "/html-to-solidjsx/",
   optimizeDeps: {
     // Add both @codemirror/state and @codemirror/view to included deps to optimize
