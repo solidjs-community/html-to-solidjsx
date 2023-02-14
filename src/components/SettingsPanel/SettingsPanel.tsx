@@ -1,3 +1,4 @@
+import { onMount } from "solid-js";
 import { setStore, store } from "../../store";
 import ConfigPanel from "../ConfigPanel/ConfigPanel";
 import TogglePanelButton from "./TogglePanelButton";
@@ -5,6 +6,15 @@ import TogglePanelButton from "./TogglePanelButton";
 export const panelSize = "w-full md:w-35vw md:min-w-300px md:max-w-450px";
 
 const SettingsPanel = () => {
+  onMount(() => {
+    try {
+      const lineWrap = JSON.parse(localStorage.lineWrap) as boolean;
+
+      requestAnimationFrame(() => {
+        setStore("lineWrap", lineWrap);
+      });
+    } catch (err) {}
+  });
   return (
     <div
       id="settings-panel"
@@ -23,9 +33,11 @@ const SettingsPanel = () => {
                   type="checkbox"
                   role="switch"
                   checked={store.lineWrap}
-                  onChange={(e) =>
-                    setStore("lineWrap", e.currentTarget.checked)
-                  }
+                  onChange={(e) => {
+                    const checked = e.currentTarget.checked;
+                    localStorage.lineWrap = checked;
+                    setStore("lineWrap", checked);
+                  }}
                 />
               </label>
             </div>

@@ -83,7 +83,7 @@ const JSXEditor = () => {
     // insert hidden fragments to keep jsx synthax highlighter to work properly
     const hasWrapperNode =
       store.config.wrapperNode === "none" && store.config.component === "none";
-    setTimeout(() => {
+    requestAnimationFrame(() => {
       setHiddenFragments(hasWrapperNode);
     });
     if (hasWrapperNode) {
