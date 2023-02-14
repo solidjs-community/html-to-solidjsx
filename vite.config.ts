@@ -14,7 +14,4 @@ export default defineConfig({
     }),
     UnoCss(),
   ],
-  build: {
-    assetsDir: "./",
-  },
 });
