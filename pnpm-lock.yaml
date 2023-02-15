@@ -28,7 +28,6 @@ specifiers:
   solid-js: ^1.6.10
   solid-start: ^0.2.21
   solid-start-static: ^0.2.20
-  tailwind.css: link:@unocss/reset/tailwind.css
   typescript: ^4.9.4
   undici: ^5.15.1
   unocss: ^0.49.2
@@ -59,7 +58,6 @@ dependencies:
   solid-js: 1.6.10
   solid-start: 0.2.21_3e3d3pqawgpvssqljxwgk2txku
   solid-start-static: 0.2.20_33yvyir75hiljizkhwqmak3elq
-  tailwind.css: link:@unocss/reset/tailwind.css
   undici: 5.18.0
   unocss: 0.49.4_vite@4.1.1
 
