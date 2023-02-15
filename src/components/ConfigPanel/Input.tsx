@@ -6,6 +6,7 @@ import {
   offset,
   shift,
 } from "@floating-ui/dom";
+import Dismiss from "solid-dismiss";
 import { useFloating } from "solid-floating-ui";
 import { Component, createSignal, Show } from "solid-js";
 
@@ -16,12 +17,16 @@ const Input: Component<{
   disabled?: boolean;
   filter?: RegExp;
   placeholder?: string;
+  tooltip?: boolean;
   onInput: (value: string) => void;
 }> = (props) => {
   const [reference, setReference] = createSignal<HTMLDivElement | null>();
   const [floating, setFloating] = createSignal<HTMLDivElement | null>();
-  let arrowEl!: HTMLDivElement;
+  const [open, setOpen] = createSignal(false);
+  // todo fix dismiss
+  const [clickedClose, setClickedClose] = createSignal(false);
   const [show, setShow] = createSignal(true);
+  let arrowEl!: HTMLDivElement;
 
   let whiteSpaceOnly = true;
 
@@ -43,46 +48,64 @@ const Input: Component<{
     return `${value.match(/\t/g) ? "\\t" : '" "'}(x${count})`;
   };
 
-  //   useFloating(reference, floating, {
-  //     middleware: [offset(4), flip(), shift()],
-  //     whileElementsMounted: (reference, floating) =>
-  //       autoUpdate(reference, floating, () => {
-  //         const arrowLen = arrowEl.offsetWidth;
-  //         const floatingOffset = Math.sqrt(2 * arrowLen ** 2) / 2;
-  //         computePosition(reference, floating, {
-  //           placement: "bottom",
-  //           middleware: [offset(floatingOffset), arrow({ element: arrowEl })],
-  //         }).then(({ x, y, middlewareData, placement }) => {
-  //           Object.assign(floating.style, {
-  //             left: `${x}px`,
-  //             top: `${y}px`,
-  //           });
-  //
-  //           const side = placement.split("-")[0];
-  //
-  //           const staticSide = {
-  //             top: "bottom",
-  //             right: "left",
-  //             bottom: "top",
-  //             left: "right",
-  //           }[side];
-  //
-  //           if (middlewareData.arrow) {
-  //             const { x, y } = middlewareData.arrow;
-  //             Object.assign(arrowEl!.style, {
-  //               left: x != null ? `${x}px` : "",
-  //               top: y != null ? `${y}px` : "",
-  //               // Ensure the static side gets unset when
-  //               // flipping to other placements' axes.
-  //               right: "",
-  //               bottom: "",
-  //               [staticSide!]: `${-arrowLen / 2}px`,
-  //               transform: "rotate(45deg)",
-  //             });
-  //           }
-  //         });
-  //       }),
-  //   });
+  const onClickReplaceTab = () => {
+    const value = props.value;
+    setClickedClose(true);
+    setOpen(false);
+    props.onInput("\t");
+  };
+
+  useFloating(reference, floating, {
+    whileElementsMounted: (reference, floating) =>
+      autoUpdate(reference, floating, () => {
+        const arrowLen = arrowEl.offsetWidth;
+        const floatingOffset = Math.sqrt(2 * arrowLen ** 2) / 2;
+        computePosition(reference, floating, {
+          placement: "bottom",
+          middleware: [
+            offset(floatingOffset),
+            flip(),
+            arrow({ element: arrowEl }),
+          ],
+        }).then(({ middlewareData, placement, x, y }) => {
+          const side = placement.split("-")[0];
+
+          Object.assign(floating.style, {
+            left: `${x}px`,
+            top: `${y}px`,
+          });
+
+          const staticSide = {
+            top: "bottom",
+            right: "left",
+            bottom: "top",
+            left: "right",
+          }[side];
+
+          if (middlewareData.arrow) {
+            const { x, y } = middlewareData.arrow;
+            const isTop = placement === "top";
+            const maskImage = `linear-gradient(${
+              isTop ? "315" : "135"
+            }deg, #000 calc(50% - ${
+              isTop ? "1.5" : "0.5"
+            }px),transparent calc(50% - ${isTop ? "1.5" : "0.5"}px))`;
+
+            Object.assign(arrowEl!.style, {
+              left: x != null ? `${x}px` : "",
+              top: y != null ? `${y}px` : "",
+              // Ensure the static side gets unset when
+              // flipping to other placements' axes.
+              right: "",
+              bottom: "",
+              [staticSide!]: `${-arrowLen / 2 + 2}px`,
+              transform: `rotate(45deg)`,
+              WebkitMaskImage: maskImage,
+            });
+          }
+        });
+      }),
+  });
 
   return (
     <label
@@ -90,10 +113,7 @@ const Input: Component<{
       classList={{ "opacity-40 cursor-not-allowed": props.disabled }}
     >
       <span>{props.name}</span>
-      <div
-        class="flex-shrink-0 relative border-black dark:border-#888 border-1 rounded-8px w-175px lg:w-200px"
-        ref={setReference}
-      >
+      <div class="flex-shrink-0 relative border-black dark:border-#888 border-1 rounded-8px w-175px lg:w-200px">
         <input
           class="px-2 py-3px rounded-8px w-full placeholder:text-black/50 dark:(bg-#3B3B3B placeholder:text-light/50)"
           classList={{ "!cursor-not-allowed": props.disabled }}
@@ -102,6 +122,12 @@ const Input: Component<{
           disabled={props.disabled}
           placeholder={props.placeholder}
           onFocus={() => {
+            if (!props.value.match(/\t/)) {
+              if (!clickedClose()) {
+                setOpen(true);
+              }
+              setClickedClose(false);
+            }
             setShow(false);
           }}
           onBlur={() => {
@@ -121,6 +147,7 @@ const Input: Component<{
 
             props.onInput(value);
           }}
+          ref={setReference}
         />
         <Show when={props.maskType && whiteSpaceOnly && show()}>
           <div class="absolute inset-0px rounded-8px px-2 py-3px opacity-50 pointer-events-none">
@@ -128,13 +155,43 @@ const Input: Component<{
           </div>
         </Show>
       </div>
-      {/* <div class="absolute w-100px h-100px bg-white z-1" ref={setFloating}>
-        <div class="absolute inset"></div>
-        <div
-          class="absolute w-20px h-20px -z-1 pointer-events-none bg-white"
-          ref={arrowEl}
-        ></div>
-      </div> */}
+      <Show when={props.tooltip}>
+        <Dismiss
+          open={open}
+          setOpen={setOpen}
+          menuButton={reference}
+          deadMenuButton
+          mount="body"
+          cursorKeys
+        >
+          <div class="absolute z-50 text-14px md:text-16px" ref={setFloating}>
+            <div class="relative bg-white rounded-8px border-1 border-#444 shadow-black/70 shadow-lg dark:(bg-#444 border-#888) p-4 z-2">
+              <p>
+                To use TABs, type{" "}
+                <code class="font-mono p-2px rounded-4px bg-black/10 dark:bg-black/50">
+                  \\t
+                </code>
+                <br />
+              </p>
+              <div class="flex gap-2 items-center">
+                <div class="border-b-1 border-#ccc dark:(border-#666) flex-grow" />
+                <div class="opacity-70">Or</div>
+                <div class="border-b-1 border-#ccc dark:(border-#666) flex-grow" />
+              </div>
+              <button
+                class="mt-2 px-10px py-6px rounded-8px border-1 border-black/50 hover:bg-black/10 text-#555 dark:(text-light border-white/50 bg-black/20 hover:(bg-white/50 text-#000)) transition"
+                onClick={onClickReplaceTab}
+              >
+                Replace with TAB
+              </button>
+            </div>
+            <div
+              class="absolute w-20px h-20px z-4 pointer-events-none rounded-tl-3px border-1 bg-white border-#444 dark:(bg-#444 border-#888)"
+              ref={arrowEl}
+            ></div>
+          </div>
+        </Dismiss>
+      </Show>
     </label>
   );
 };

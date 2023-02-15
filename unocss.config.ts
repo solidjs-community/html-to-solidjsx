@@ -5,15 +5,23 @@ import {
   transformerVariantGroup,
 } from "unocss";
 
+const parseValue = (value: string) => {
+  return value.replace(/_/g, " ");
+};
+// mask-image-[linear-gradient(135deg,#000_calc(50%_-_1px),transparent_calc(50%_-_1px))]
 export default defineConfig({
   rules: [
     [
       /^bg-image-\[(.+)\]$/,
-      ([_, d]) => ({ "background-image": d.replace(/_/g, " ") }),
+      ([_, d]) => ({ "background-image": parseValue(d) }),
     ],
+    [/^transition-prop-\[(.+)\]$/, ([_, d]) => ({ transition: parseValue(d) })],
     [
-      /^transition-prop-\[(.+)\]$/,
-      ([_, d]) => ({ transition: d.replace(/_/g, " ") }),
+      /^mask-image-\[(.+)\]$/,
+      ([_, d]) => ({
+        "-webkit-mask-image": parseValue(d),
+        "mask-image": parseValue(d),
+      }),
     ],
   ],
   theme: {

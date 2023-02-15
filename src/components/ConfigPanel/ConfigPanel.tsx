@@ -19,6 +19,7 @@ const ConfigPanel = () => {
       type: "input" | "checkbox" | "select";
       name: string;
       value: string | boolean;
+      tooltip?: boolean;
       options?: string[];
       disabled?: boolean;
       disables?: { key: string; isValue: string | boolean }[];
@@ -84,6 +85,7 @@ const ConfigPanel = () => {
     indent: {
       type: "input",
       name: "indent characters",
+      tooltip: true,
       value: store.config.indent!,
       maskType: "character-count",
     },
@@ -212,6 +214,7 @@ const ConfigPanel = () => {
                       maskType={item.maskType!}
                       disabled={item.disabled}
                       filter={item.filter}
+                      tooltip={item.tooltip}
                       placeholder={item.placeholder}
                       onInput={(value) => {
                         trigger(value);
@@ -236,7 +239,7 @@ const ConfigPanel = () => {
         </For>
       </ul>
       <button
-        class="mt-4 px-20px py-6px rounded-8px border-1 border-black/50 hover:bg-black/10 text-#555 dark:(text-light border-white/50 hover:bg-white/10)"
+        class="mt-4 px-20px py-6px rounded-8px border-1 border-black/50 hover:bg-black/10 text-#555 dark:(text-light border-white/50 hover:bg-white/10) transition"
         onClick={onClickResetAll}
       >
         Reset All

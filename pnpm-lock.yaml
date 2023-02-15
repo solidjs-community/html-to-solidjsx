@@ -22,7 +22,7 @@ specifiers:
   esbuild: ^0.14.54
   postcss: ^8.4.21
   solid-codemirror: ^2.2.1
-  solid-dismiss: ^1.6.4
+  solid-dismiss: ^1.6.5
   solid-floating-ui: ^0.2.0
   solid-icons: ^1.0.4
   solid-js: ^1.6.10
@@ -53,7 +53,7 @@ dependencies:
   '@unocss/transformer-variant-group': 0.49.4
   codemirror: 6.0.1
   solid-codemirror: 2.2.1_huouimfdfhfggk7gb5rfzl6rji
-  solid-dismiss: 1.6.4_solid-js@1.6.10
+  solid-dismiss: 1.6.5_solid-js@1.6.10
   solid-floating-ui: 0.2.0_34emuw3deouqw7miltyhgemruq
   solid-icons: 1.0.4_solid-js@1.6.10
   solid-js: 1.6.10
@@ -4615,8 +4615,8 @@ packages:
       solid-js: 1.6.10
     dev: false
 
-  /solid-dismiss/1.6.4_solid-js@1.6.10:
-    resolution: {integrity: sha512-9PAvUcxKmIILiXAIn046fNlmNYY5ZmaIxVb3PwqlhnfVM1Bj/GyVKtRl+wAAK8hceijH1ZHnLrCWo/G6Gk0Eig==}
+  /solid-dismiss/1.6.5_solid-js@1.6.10:
+    resolution: {integrity: sha512-z8f0jpYw4iZumNFkSb2zwVzqxgG0LqUY3rOSz9e2+CtOt2dQkpKoGNusKIO32Mlp9LW9Ck2+hNLqB82VpEqurA==}
     peerDependencies:
       solid-js: '1'
     dependencies:
