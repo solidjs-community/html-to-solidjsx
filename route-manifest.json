@@ -1,0 +1,27 @@
+{
+  "/": [
+    {
+      "type": "script",
+      "href": "/html-to-solidjsx/assets/index-20dcc9d3.js"
+    },
+    {
+      "type": "script",
+      "href": "/html-to-solidjsx/assets/entry-client-63f127f3.js"
+    },
+    {
+      "type": "style",
+      "href": "/html-to-solidjsx/assets/entry-client-8f956150.css"
+    }
+  ],
+  "entry-client": [
+    {
+      "type": "script",
+      "href": "/html-to-solidjsx/assets/entry-client-63f127f3.js"
+    },
+    {
+      "type": "style",
+      "href": "/html-to-solidjsx/assets/entry-client-8f956150.css"
+    }
+  ],
+  "index.html": []
+}
