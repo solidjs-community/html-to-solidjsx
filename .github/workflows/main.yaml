@@ -1,7 +1,7 @@
-name: CI
+name: Deploy site
 
   push:
-    branches: [ main ]
+    branches: [main]
   workflow_dispatch:
 
 jobs:
