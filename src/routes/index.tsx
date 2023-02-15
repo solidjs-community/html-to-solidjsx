@@ -4,7 +4,6 @@ import Header from "~/components/Header/Header";
 import SettingsPanel from "~/components/SettingsPanel/SettingsPanel";
 
 export default function Home() {
-  console.log("init");
   return (
     <>
       <Header />
