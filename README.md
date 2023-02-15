@@ -21,7 +21,7 @@ Solid attempts to stay as close to HTML standards as possible, allowing copy and
 - [solid-js](https://github.com/solidjs/solid/): The view library
 - [codemirror](https://codemirror.net/): The in-browser code editor
 - [solid-codemirror](https://github.com/riccardoperra/solid-codemirror): SolidJS bindings for codemirror
-- [html-to-jsx](https://www.npmjs.com/package/html-to-jsx)(modified for Solid JSX compatiblity): A html to jsx compiler
+- [htmltojsx](https://github.com/reactjs/react-magic/blob/master/README-htmltojsx.md)(modified for Solid JSX compatiblity): The HTML to JSX converter
 - [UnoCSS](https://uno.antfu.me/): The CSS framework
 - [vite](https://vitejs.dev/): The module bundler
-- [pnpm](https://pnpm.js.org/): Fast, disk space efficient package manager
+- [pnpm](https://pnpm.js.org/): The package manager
