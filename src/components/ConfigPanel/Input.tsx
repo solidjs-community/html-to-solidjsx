@@ -124,7 +124,10 @@ const Input: Component<{
           onFocus={() => {
             if (!props.value.match(/\t/)) {
               if (!clickedClose()) {
-                setOpen(true);
+                // another dismiss bug
+                setTimeout(() => {
+                  setOpen(true);
+                });
               }
               setClickedClose(false);
             }
@@ -162,6 +165,12 @@ const Input: Component<{
           menuButton={reference}
           deadMenuButton
           mount="body"
+          animation={{
+            enterClass: "opacity-0",
+            enterToClass: "opacity-100 transition",
+            exitClass: "opacity-100",
+            exitToClass: "opacity-0 transition",
+          }}
           cursorKeys
         >
           <div class="absolute z-50 text-14px md:text-16px" ref={setFloating}>
