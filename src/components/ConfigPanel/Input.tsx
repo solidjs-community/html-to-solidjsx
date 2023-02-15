@@ -88,8 +88,8 @@ const Input: Component<{
             const maskImage = `linear-gradient(${
               isTop ? "315" : "135"
             }deg, #000 calc(50% - ${
-              isTop ? "1.5" : "0.5"
-            }px),transparent calc(50% - ${isTop ? "1.5" : "0.5"}px))`;
+              isTop ? "1" : "0.5"
+            }px),transparent calc(50% - ${isTop ? "1" : "0.5"}px))`;
 
             Object.assign(arrowEl!.style, {
               left: x != null ? `${x}px` : "",
