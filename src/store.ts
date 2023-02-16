@@ -39,6 +39,7 @@ function getHTMLText() {
 <!-- Solid is solid -->
 <h1 class="heading" style="--solid-primary: #2c4f7c; color: #000;">SolidJSX</h1>
 <div contenteditable tabindex="0" id="name"></div>
+<br>
 <svg width="50" height="50"  viewBox="0 0 13.2 13.2">
   <defs>
     <linearGradient id="a">
@@ -60,6 +61,7 @@ function getJSXText() {
 {/* Solid is solid */}
 <h1 class="heading" style={{"--solid-primary": "#2c4f7c", "color": "#000"}}>SolidJSX</h1>
 <div contenteditable tabindex="0" id="name" />
+<br />
 <svg width="50" height="50" viewBox="0 0 13.2 13.2">
   <defs>
     <linearGradient id="hi-a">
