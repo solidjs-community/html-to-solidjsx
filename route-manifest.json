@@ -2,25 +2,25 @@
   "/": [
     {
       "type": "script",
-      "href": "/html-to-solidjsx/assets/index-8c0436c0.js"
+      "href": "/html-to-solidjsx/assets/index-dc15c789.js"
     },
     {
       "type": "script",
-      "href": "/html-to-solidjsx/assets/entry-client-4b660636.js"
+      "href": "/html-to-solidjsx/assets/entry-client-ae4ff553.js"
     },
     {
       "type": "style",
-      "href": "/html-to-solidjsx/assets/entry-client-8f956150.css"
+      "href": "/html-to-solidjsx/assets/entry-client-a825b5f4.css"
     }
   ],
   "entry-client": [
     {
       "type": "script",
-      "href": "/html-to-solidjsx/assets/entry-client-4b660636.js"
+      "href": "/html-to-solidjsx/assets/entry-client-ae4ff553.js"
     },
     {
       "type": "style",
-      "href": "/html-to-solidjsx/assets/entry-client-8f956150.css"
+      "href": "/html-to-solidjsx/assets/entry-client-a825b5f4.css"
     }
   ],
   "index.html": []
