@@ -142,17 +142,24 @@ const JSXEditor = () => {
     )
   );
 
+  onMount(() => {
+    requestAnimationFrame(() => {
+      const { contentDOM } = editorView();
+      contentDOM.setAttribute("aria-label", "JSX textbox");
+      contentDOM.setAttribute("aria-readonly", "true");
+    });
+  });
+
   return (
     <div class="grid grid-rows-[min-content_1fr_min-content] h-full">
       <div class="py-2px dark:bg-dark bg-white border-b-2 border-#f1f1f1 dark:border-#2E2E2E">
-        <div class="dark:text-light font-sans text-12px md:text-16px font-500 ml-20px opacity-50">
+        <div class="text-#747474 dark:text-#8C8C8C font-sans text-12px md:text-16px font-500 ml-20px">
           JSX
         </div>
       </div>
       <div class="relative overflow-auto">
         <div
           class="absolute inset-0"
-          aria-readonly={true}
           ref={(el) => {
             onMount(() => {
               setEditorRef(el);

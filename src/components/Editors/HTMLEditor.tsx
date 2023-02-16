@@ -51,9 +51,16 @@ const HTMLEditor = () => {
 
   createEffect(on(extensions, (extensions) => reconfigure(extensions)));
 
+  onMount(() => {
+    requestAnimationFrame(() => {
+      const { contentDOM } = editorView();
+      contentDOM.setAttribute("aria-label", "HTML textbox");
+    });
+  });
+
   return (
     <div class="grid grid-rows-[min-content_1fr] h-full">
-      <div class="flex justify-between py-2px text-#808080 bg-white border-b-2 border-#f1f1f1 dark:(text-#8C8C8C bg-dark border-#2E2E2E)">
+      <div class="flex justify-between py-2px text-#747474 bg-white border-b-2 border-#f1f1f1 dark:(text-#8C8C8C bg-dark border-#2E2E2E)">
         <div class=" font-sans text-12px md:text-16px font-500 ml-20px">
           HTML
         </div>
@@ -63,6 +70,7 @@ const HTMLEditor = () => {
             "mr-12px": store.layout === "rows" || store.layout === "html",
           }}
           onClick={onClear}
+          aria-label="Clear HTML input"
         >
           <FiTrash2 size={15} class="md:scale-125" />
         </button>
@@ -71,7 +79,9 @@ const HTMLEditor = () => {
         <div
           class="absolute inset-0"
           ref={(el) => {
+            console.log(editorView());
             onMount(() => {
+              console.log(editorView());
               setEditorRef(el);
             });
           }}

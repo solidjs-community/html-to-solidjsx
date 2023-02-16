@@ -154,7 +154,7 @@ const ConfigPanel = () => {
 
   return (
     <div class="p-4 pt-0">
-      <h2 class="opacity-50 font-bold pt-4 md:pt-2">JSX Config</h2>
+      <h2 class="text-#888 font-bold pt-4 md:pt-2">JSX Config</h2>
       <ul>
         <For each={Object.entries(configMap)}>
           {([key, item]) => {

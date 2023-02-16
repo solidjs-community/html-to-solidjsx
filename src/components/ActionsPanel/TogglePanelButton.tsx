@@ -2,7 +2,6 @@ import { createMediaQuery } from "@solid-primitives/media";
 import { FiSettings, FiX } from "solid-icons/fi";
 import { createEffect, createRenderEffect, createSignal, on } from "solid-js";
 import { onTransitionend } from "../../utils/onTransitionend";
-import { reflow } from "../../utils/reflow";
 
 const TogglePanelButton = () => {
   const vwMax850px = createMediaQuery("(max-width:850px)");
@@ -117,6 +116,8 @@ const TogglePanelButton = () => {
     <button
       class="flex justify-center items-center h-[40px] text-#999 dark:(text-#555) hover:text-#000 dark:hover:text-#999 transition"
       onClick={() => setClose(!close())}
+      aria-label={`${!close() ? "close" : "open"} configeration panel`}
+      aria-expanded={!close()}
     >
       <div class="relative">
         <FiX size={28} ref={toggleBtnXIconEl} />

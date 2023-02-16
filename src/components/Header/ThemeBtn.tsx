@@ -123,6 +123,7 @@ const ThemeBtn = () => {
     <button
       class="w-45px h-45px flex justify-center items-center rounded-full dark:text-solid-mediumgray text-solid-gray/80 rounded-full hover:(text-black bg-#F2F2F2) dark:hover:(text-white bg-#333) transition"
       onClick={onClickTheme}
+      aria-label={`theme. Currently on ${theme()} theme`}
     >
       <Switch>
         <Match when={theme() === "os"}>

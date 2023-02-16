@@ -25,7 +25,7 @@ const CopyJSXButton = () => {
       class="block mx-auto w-full max-w-300px rounded-12px bg-image-[linear-gradient(180deg,#4e88c6,#446b9e)]"
       onClick={onCopyClick}
     >
-      <div class="flex justify-between items-center gap-2 px-16px py-4px md:(px-20px py-6px) rounded-9px m-3px bg-solid-light text-light hover:(bg-#446b9e) transition">
+      <div class="flex justify-between items-center gap-2 px-16px py-4px md:(px-20px py-6px) rounded-9px m-3px bg-solid-light text-#fff hover:(bg-#446b9e) transition">
         <span class="whitespace-nowrap">
           {hasCopied() ? "Copied!" : "Copy JSX"}
         </span>{" "}
