@@ -54,7 +54,7 @@ const HTMLEditor = () => {
   onMount(() => {
     requestAnimationFrame(() => {
       const { contentDOM } = editorView();
-      contentDOM.setAttribute("aria-label", "HTML textbox");
+      contentDOM.setAttribute("aria-label", "HTML code input textbox");
     });
   });
 

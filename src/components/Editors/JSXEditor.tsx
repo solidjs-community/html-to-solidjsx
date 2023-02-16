@@ -145,7 +145,7 @@ const JSXEditor = () => {
   onMount(() => {
     requestAnimationFrame(() => {
       const { contentDOM } = editorView();
-      contentDOM.setAttribute("aria-label", "JSX textbox");
+      contentDOM.setAttribute("aria-label", "JSX code output");
       contentDOM.setAttribute("aria-readonly", "true");
     });
   });
