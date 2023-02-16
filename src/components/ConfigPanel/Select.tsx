@@ -51,6 +51,12 @@ const Select: Component<{
         open={open}
         setOpen={setOpen}
         menuButton={reference}
+        animation={{
+          enterClass: "opacity-0",
+          enterToClass: "opacity-100 transition",
+          exitClass: "opacity-100",
+          exitToClass: "opacity-0 transition",
+        }}
         onOpen={(open) => {
           if (open) {
             setFloatingUlWidthSameSizeAsButton();
