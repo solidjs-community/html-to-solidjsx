@@ -2,11 +2,11 @@
   "/": [
     {
       "type": "script",
-      "href": "/html-to-solidjsx/assets/index-734e8233.js"
+      "href": "/html-to-solidjsx/assets/index-2e618cce.js"
     },
     {
       "type": "script",
-      "href": "/html-to-solidjsx/assets/entry-client-a852132f.js"
+      "href": "/html-to-solidjsx/assets/entry-client-3f0669b8.js"
     },
     {
       "type": "style",
@@ -16,7 +16,7 @@
   "entry-client": [
     {
       "type": "script",
-      "href": "/html-to-solidjsx/assets/entry-client-a852132f.js"
+      "href": "/html-to-solidjsx/assets/entry-client-3f0669b8.js"
     },
     {
       "type": "style",
