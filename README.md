@@ -13,7 +13,7 @@ Existing HTML to JSX online transformers aren't compatible for SolidJS, it trans
 1. Replaces standard HTML attributes such as `class` and `for` to `className` and `htmlFor`.
 2. Incorrectly changes css variables names in style attributes.
 
-Solid attempts to stay as close to HTML standards as possible, allowing copy and paste from answers on Stack Overflow or from template builders from your designers. This [site](https://solidjs-community.github.io/html-to-solidjsx) brings that goal even closer while providing customizations such as the option to camelCase attributes or having style attribute value set as a CSS object or string.
+Solid attempts to stay as close to HTML standards as possible, allowing copy and paste from answers on Stack Overflow or from template builders from your designers. This [site](https://solidjs-community.github.io/html-to-solidjsx) brings that goal even closer by converting void elements(`<br>`) to self-closing(`<br/>`), while also providing customizations such as the option to camelCase attributes or having style attribute value set as a CSS object or string.
 
 ## Credits / Technologies used
 
