@@ -51,12 +51,6 @@ const Select: Component<{
         open={open}
         setOpen={setOpen}
         menuButton={reference}
-        animation={{
-          enterClass: "opacity-0",
-          enterToClass: "opacity-100 transition",
-          exitClass: "opacity-100",
-          exitToClass: "opacity-0 transition",
-        }}
         onOpen={(open) => {
           if (open) {
             setFloatingUlWidthSameSizeAsButton();
@@ -66,6 +60,12 @@ const Select: Component<{
         focusElementOnOpen={`[data-selected="true"]`}
         mount="body"
         cursorKeys
+        animation={{
+          enterClass: "opacity-0",
+          enterToClass: "opacity-100 transition",
+          exitClass: "opacity-100",
+          exitToClass: "opacity-0 transition-200",
+        }}
       >
         <div
           class="bg-white rounded-8px border-1 border-#444 shadow-lg shadow-black/70 z-50 dark:(bg-#444 border-#888) overflow-clip"

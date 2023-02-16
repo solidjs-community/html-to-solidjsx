@@ -165,13 +165,13 @@ const Input: Component<{
           menuButton={reference}
           deadMenuButton
           mount="body"
+          cursorKeys
           animation={{
             enterClass: "opacity-0",
             enterToClass: "opacity-100 transition",
             exitClass: "opacity-100",
-            exitToClass: "opacity-0 transition",
+            exitToClass: "opacity-0 transition-200",
           }}
-          cursorKeys
         >
           <div class="absolute z-50 text-14px md:text-16px" ref={setFloating}>
             <div class="relative bg-white rounded-8px border-1 border-#444 shadow-black/70 shadow-lg dark:(bg-#444 border-#888) p-4 z-2">
