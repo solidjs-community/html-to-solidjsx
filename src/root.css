@@ -36,13 +36,6 @@ main {
   @apply bg-dark;
 }
 
-/* TODO */
-/* arbitrary-variant fails to compile in unocss, so hardcoded the class here */
-.\[\&_\[data-icon-text\]\]\:text-white [data-icon-text] {
-  --un-text-opacity: 1;
-  color: rgba(255, 255, 255, var(--un-text-opacity));
-}
-
 /* CodeMirror */
 .cm-gutter {
   @apply bg-white dark:bg-dark;

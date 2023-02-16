@@ -123,7 +123,7 @@ const ActionsPanel = () => {
                     <div
                       class="flex items-center gap-2 py-6px"
                       classList={{
-                        "bg-black/60 text-light dark:(bg-white/80 text-#000) rounded-8px pl-6px -ml-6px !py-5px my-1px !py-5px my-1px":
+                        "bg-black/60 text-light [&_[data-icon-text]]:text-#000 dark:(bg-white/80 text-#000 [&_[data-icon-text]]:text-white) rounded-8px pl-6px -ml-6px !py-5px my-1px !py-5px my-1px":
                           id === store.layout,
                       }}
                     >
