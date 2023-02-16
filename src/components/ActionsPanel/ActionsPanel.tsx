@@ -70,7 +70,7 @@ const ActionsPanel = () => {
         <button
           /* TODO */
           /* arbitrary-variant class [&_[data-icon-text]]:text-white fails to compile in unocss, so hardcoded the class in main.css */
-          class="flex justify-center items-center h-[42px] w-[42px] p-4px text-8px rounded-8px border-1 hover:text-#000 dark:hover:text-#999 transition [&_[data-icon-text]]:text-white"
+          class="flex justify-center items-center h-[42px] w-[42px] p-4px text-8px rounded-8px border-1 hover:text-#000 dark:hover:text-#999 transition [&_[data-icon-text]]:text-white dark:[&_[data-icon-text]]:text-white"
           classList={{
             "border-black bg-#eee dark:(bg-black border-#888)": open(),
             "border-transparent": !open(),
