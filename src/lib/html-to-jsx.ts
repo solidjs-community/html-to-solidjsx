@@ -8,19 +8,90 @@ const NODE_TYPE = {
 };
 const isServer = typeof window === "undefined";
 
-const ATTRIBUTE_MAPPING = {
+const ATTRIBUTE_MAPPING: {
+  [key: string]: { default: string; camelCased?: string };
+} = {
   // for: "htmlFor",
   // class: "className",
-  tabindex: "tabIndex",
-  autofocus: "autoFocus",
-  contenteditable: "contentEditable",
-  contextmenu: "contextMenu",
-  crossorigin: "crossOrigin",
-  autocapitalize: "autoCapitalize",
-  // autocomplete: 'autoComplete',
-  inputmode: "inputMode",
-  maxlength: "maxLength",
-  minlength: "minLength",
+  tabindex: {
+    default: "tabindex",
+    camelCased: "tabIndex",
+  },
+  autofocus: {
+    default: "autofocus",
+    camelCased: "autoFocus",
+  },
+  contenteditable: {
+    default: "contenteditable",
+    camelCased: "contentEditable",
+  },
+  contextmenu: {
+    default: "contextmenu",
+    camelCased: "contextMenu",
+  },
+  crossorigin: {
+    default: "crossorigin",
+    camelCased: "crossOrigin",
+  },
+  autocapitalize: {
+    default: "autocapitalize",
+    camelCased: "autoCapitalize",
+  },
+  autocomplete: {
+    default: "autocomplete",
+  },
+  inputmode: {
+    default: "inputmode",
+    camelCased: "inputMode",
+  },
+  maxlength: {
+    default: "maxlength",
+    camelCased: "maxLength",
+  },
+  minlength: {
+    default: "minlength",
+    camelCased: "minLength",
+  },
+  ismap: {
+    default: "ismap",
+    camelCased: "isMap",
+  },
+  usemap: {
+    default: "usemap",
+    camelCased: "useMap",
+  },
+  referrerpolicy: {
+    default: "referrerpolicy",
+    camelCased: "referrerPolicy",
+  },
+  formaction: {
+    default: "formaction",
+    camelCased: "formAction",
+  },
+  formenctype: {
+    default: "formenctype",
+    camelCased: "formEnctype",
+  },
+  formmethod: {
+    default: "formmethod",
+    camelCased: "formMethod",
+  },
+  formnovalidate: {
+    default: "formnovalidate",
+    camelCased: "formNoValidate",
+  },
+  formtarget: {
+    default: "formtarget",
+    camelCased: "formTarget",
+  },
+  "http-equiv": {
+    default: "httpequiv",
+    camelCased: "httpEquiv",
+  },
+  datetime: {
+    default: "datetime",
+    camelCased: "dateTime",
+  },
 };
 
 const ELEMENT_ATTRIBUTE_MAPPING = {
@@ -798,11 +869,14 @@ class HTMLtoJSX {
       default:
         const tagName = jsxTagName(node.tagName);
         const name = attribute.name;
-        let result = this.config.camelCaseAttributes
-          ? // (ELEMENT_ATTRIBUTE_MAPPING[tagName] &&
-            //   ELEMENT_ATTRIBUTE_MAPPING[tagName][attribute.name as any]) ||
-            ATTRIBUTE_MAPPING[attribute.name as "tabindex"] || name
-          : name;
+        let result = name;
+        const attributeMapMatched = ATTRIBUTE_MAPPING[attribute.name];
+
+        if (attributeMapMatched) {
+          result = this.config.camelCaseAttributes
+            ? attributeMapMatched.camelCased || result
+            : attributeMapMatched.default;
+        }
 
         if (result === "class" && this.config.classNameAttribute) {
           result = "className";
