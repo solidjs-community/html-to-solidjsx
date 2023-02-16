@@ -70,7 +70,7 @@ const HTMLEditor = () => {
             "mr-12px": store.layout === "rows" || store.layout === "html",
           }}
           onClick={onClear}
-          aria-label="Clear HTML input"
+          aria-label="Clear HTML textbox"
         >
           <FiTrash2 size={15} class="md:scale-125" />
         </button>
@@ -79,9 +79,7 @@ const HTMLEditor = () => {
         <div
           class="absolute inset-0"
           ref={(el) => {
-            console.log(editorView());
             onMount(() => {
-              console.log(editorView());
               setEditorRef(el);
             });
           }}
