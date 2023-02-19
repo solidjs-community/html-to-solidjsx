@@ -49,6 +49,9 @@ const HTMLEditor = () => {
       lineNumbers(),
       highlightActiveLineGutter(),
       store.lineWrap ? EditorView.lineWrapping : [],
+      EditorView.contentAttributes.of({
+        "aria-label": "HTML code input textbox",
+      }),
       html(),
     ];
   };
@@ -56,13 +59,6 @@ const HTMLEditor = () => {
   const reconfigure = createExtension(extensions());
 
   createEffect(on(extensions, (extensions) => reconfigure(extensions)));
-
-  onMount(() => {
-    requestAnimationFrame(() => {
-      const { contentDOM } = editorView();
-      contentDOM.setAttribute("aria-label", "HTML code input textbox");
-    });
-  });
 
   // prevent resizing viewport height on firefox mobile when virtual keyboard opened
   if (isFirefox && isMobile) {

@@ -70,6 +70,10 @@ const JSXEditor = () => {
             },
           })
         : [],
+      EditorView.contentAttributes.of({
+        "aria-label": "JSX code output",
+        "aria-readonly": "true",
+      }),
       javascript({
         jsx: true,
         typescript: true,
@@ -141,14 +145,6 @@ const JSXEditor = () => {
       { defer: true }
     )
   );
-
-  onMount(() => {
-    requestAnimationFrame(() => {
-      const { contentDOM } = editorView();
-      contentDOM.setAttribute("aria-label", "JSX code output");
-      contentDOM.setAttribute("aria-readonly", "true");
-    });
-  });
 
   return (
     <div class="grid grid-rows-[min-content_1fr_min-content] h-full">
