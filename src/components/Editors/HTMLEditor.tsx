@@ -18,6 +18,7 @@ import { editorBaseTheme } from "../../editor/editorBaseTheme";
 import { FiTrash2 } from "solid-icons/fi";
 import { isFirefox, isMobile } from "@solid-primitives/platform";
 import { useWindowSize } from "@solid-primitives/resize-observer";
+import { createMediaQuery } from "@solid-primitives/media";
 
 const HTMLEditor = () => {
   const {
@@ -28,6 +29,7 @@ const HTMLEditor = () => {
     onValueChange,
   });
   createEditorControlledValue(editorView, () => store.htmlText);
+  const isPortrait = createMediaQuery("(orientation: portrait)");
   const size = useWindowSize();
   let vhHeight = 0;
 
@@ -59,25 +61,34 @@ const HTMLEditor = () => {
     requestAnimationFrame(() => {
       const { contentDOM } = editorView();
       contentDOM.setAttribute("aria-label", "HTML code input textbox");
-      vhHeight = document.documentElement.clientHeight;
     });
   });
 
-  createEffect(
-    on(
-      () => size.height,
-      (height) => {
-        if (!(isFirefox && isMobile)) return;
+  // prevent resizing viewport height on firefox mobile when virtual keyboard opened
+  if (isFirefox && isMobile) {
+    createEffect(
+      on(isPortrait, () => {
+        const editor = editorView();
+        if (editor && document.activeElement === editor.contentDOM) return;
 
-        if (height !== vhHeight) {
-          document.documentElement.style.height = `${vhHeight}px`;
-        } else {
-          document.documentElement.style.height = "";
-        }
-      },
-      { defer: true }
-    )
-  );
+        vhHeight = document.documentElement.clientHeight;
+      })
+    );
+
+    createEffect(
+      on(
+        () => size.height,
+        (height) => {
+          if (height !== vhHeight) {
+            document.documentElement.style.height = `${vhHeight}px`;
+          } else {
+            document.documentElement.style.height = "";
+          }
+        },
+        { defer: true }
+      )
+    );
+  }
 
   return (
     <div class="grid grid-rows-[min-content_1fr] h-full">
