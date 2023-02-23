@@ -84,7 +84,7 @@ const ConfigPanel = () => {
     },
     indent: {
       type: "input",
-      name: "indent characters",
+      name: "Indent characters",
       tooltip: true,
       value: store.config.indent!,
       maskType: "character-count",
