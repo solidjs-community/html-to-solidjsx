@@ -2,7 +2,7 @@ import { createMediaQuery } from "@solid-primitives/media";
 import { FiArrowLeft, FiSettings } from "solid-icons/fi";
 import { createEffect, createSignal, on } from "solid-js";
 import { store } from "../../store";
-import { hasScrollbarY } from "../../utils/hasScrollbar";
+import { hasNonOverlayScrollbarY } from "../../utils/hasNonOverlayScrollbarY";
 import { onTransitionend } from "../../utils/onTransitionend";
 
 const TogglePanelButton = () => {
@@ -68,7 +68,7 @@ const TogglePanelButton = () => {
     const windowInnerWidth = window.innerWidth;
     const headerFakeStartingPosition = headerFakeBgWidth - windowInnerWidth;
     const headerNavEndPosition = windowInnerWidth - headerNavRight - navPadding;
-    const configPanelHasScrollbar = hasScrollbarY(configContainerEl);
+    const configPanelHasScrollbar = hasNonOverlayScrollbarY(configContainerEl);
 
     mainEl.style.gridTemplateColumns = `${configPanelWidth}px 1fr`;
     splitEditorEl.style.transform = "translateY(60px)";
@@ -158,7 +158,7 @@ const TogglePanelButton = () => {
     const windowInnerWidth = window.innerWidth;
     const headerFakeStartingPosition = configPanelWidth - windowInnerWidth;
     const headerNavEndPosition = configPanelWidth - windowInnerWidth;
-    const configPanelHasScrollbar = hasScrollbarY(configContainerEl);
+    const configPanelHasScrollbar = hasNonOverlayScrollbarY(configContainerEl);
 
     mainEl.style.gridTemplateColumns = `${configPanelWidth}px 1fr`;
     mainEl.style.transition = "grid-template-columns 250ms";
@@ -256,7 +256,8 @@ const TogglePanelButton = () => {
           htmlEditorContainer,
           jsxEditorContainer,
         } = queryEls();
-        const configPanelHasScrollbar = hasScrollbarY(configContainerEl);
+        const configPanelHasScrollbar =
+          hasNonOverlayScrollbarY(configContainerEl);
 
         if (!vwMax850px) {
           jsxEditorContainer.style.display = "block";
