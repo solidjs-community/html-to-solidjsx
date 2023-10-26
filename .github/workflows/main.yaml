@@ -12,11 +12,20 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: install
-        run: npm i --legacy-peer-deps
+      - uses: pnpm/action-setup@v2.2.4
 
-      - name: build
-        run: npm run build
+      - name: Setup Node.js environment
+
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Build
+        run: pnpm build
 
       - name: deploy pages
         uses: JamesIves/github-pages-deploy-action@v4.4.1
