@@ -1,13 +1,7 @@
 import { $TRACK, createEffect, createSignal, For, on, onMount } from "solid-js";
 import { createStore, produce } from "solid-js/store";
 import { HTMLtoJSXConfig } from "../../lib/html-to-jsx";
-import {
-  ConfigKey,
-  defaultConfig,
-  setStore,
-  store,
-  TJSXConfig,
-} from "../../store";
+import { ConfigKey, defaultConfig, setStore, store, TJSXConfig } from "../../store";
 import { debounce } from "@solid-primitives/scheduled";
 import Select from "./Select";
 import Input from "./Input";
@@ -126,18 +120,17 @@ const ConfigPanel = () => {
 
               if (stateItem.disables) {
                 stateItem.disables.forEach((item) => {
-                  state[item.key as ConfigKey]!.disabled =
-                    item.isValue === value;
+                  state[item.key as ConfigKey]!.disabled = item.isValue === value;
                 });
               }
 
               stateItem.value = value as any;
             }
-          })
+          }),
         );
       },
-      { defer: true }
-    )
+      { defer: true },
+    ),
   );
 
   onMount(() => {
@@ -173,7 +166,7 @@ const ConfigPanel = () => {
                         setStore(
                           produce((state) => {
                             state.config[key as ConfigKey] = value as any;
-                          })
+                          }),
                         );
                       }}
                     />
@@ -188,7 +181,7 @@ const ConfigPanel = () => {
                         setStore(
                           produce((state) => {
                             state.config[key as ConfigKey] = checked as any;
-                          })
+                          }),
                         );
                       }}
                     />
@@ -204,7 +197,7 @@ const ConfigPanel = () => {
                     setStore(
                       produce((state) => {
                         state.config[key as ConfigKey] = value as any;
-                      })
+                      }),
                     );
                   }, 400);
                   return (

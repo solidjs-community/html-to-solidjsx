@@ -1,7 +1,8 @@
 import { createMediaQuery } from "@solid-primitives/media";
-import { FiSettings, FiX } from "solid-icons/fi";
-import { createEffect, createRenderEffect, createSignal, on } from "solid-js";
+import { createEffect, createSignal, on } from "solid-js";
 import { onTransitionend } from "../../utils/onTransitionend";
+import XIcon from "../Icons/XIcon";
+import SettingsIcon from "../Icons/SettingsIcon";
 
 const TogglePanelButton = () => {
   const vwMax850px = createMediaQuery("(max-width:850px)");
@@ -11,9 +12,7 @@ const TogglePanelButton = () => {
 
   const queryEls = () => {
     const actionsPanelEl = document.getElementById("actions-panel")!;
-    const settingsPanelContainerEl = document.getElementById(
-      "settings-panel-container"
-    )!;
+    const settingsPanelContainerEl = document.getElementById("settings-panel-container")!;
     const configContainerEl = document.getElementById("config-container")!;
 
     return {
@@ -40,8 +39,7 @@ const TogglePanelButton = () => {
   };
 
   const closePanel = () => {
-    const { actionsPanelEl, settingsPanelContainerEl, configContainerEl } =
-      queryEls();
+    const { actionsPanelEl, settingsPanelContainerEl, configContainerEl } = queryEls();
     const actionsPanelHeight = actionsPanelEl.getBoundingClientRect().height;
     settingsPanelContainerEl.style.height = `${actionsPanelHeight}px`;
     settingsPanelContainerEl.style.minHeight = "auto";
@@ -73,8 +71,8 @@ const TogglePanelButton = () => {
         }
         openPanel();
       },
-      { defer: true }
-    )
+      { defer: true },
+    ),
   );
 
   createEffect(
@@ -86,14 +84,9 @@ const TogglePanelButton = () => {
         }
 
         const run = () => {
-          const {
-            actionsPanelEl,
-            settingsPanelContainerEl,
-            configContainerEl,
-          } = queryEls();
+          const { actionsPanelEl, settingsPanelContainerEl, configContainerEl } = queryEls();
 
-          const actionsPanelHeight =
-            actionsPanelEl.getBoundingClientRect().height;
+          const actionsPanelHeight = actionsPanelEl.getBoundingClientRect().height;
 
           if (vwMax850px) {
             settingsPanelContainerEl.style.height = `${actionsPanelHeight}px`;
@@ -108,8 +101,8 @@ const TogglePanelButton = () => {
 
         setTimeout(run, vwMax850px ? 100 : 0);
       },
-      { defer: true }
-    )
+      { defer: true },
+    ),
   );
 
   return (
@@ -120,12 +113,9 @@ const TogglePanelButton = () => {
       aria-expanded={!close()}
     >
       <div class="relative">
-        <FiX size={28} ref={toggleBtnXIconEl} />
-        <div
-          class="absolute inset-0 opacity-0 origin-center"
-          ref={toggleBtnSettingsIconEl}
-        >
-          <FiSettings size={28} />
+        <XIcon size={28} ref={toggleBtnXIconEl} />
+        <div class="absolute inset-0 opacity-0 origin-center" ref={toggleBtnSettingsIconEl}>
+          <SettingsIcon size={28} />
         </div>
       </div>
     </button>

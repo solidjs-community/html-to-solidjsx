@@ -1,9 +1,9 @@
 import { createMediaQuery } from "@solid-primitives/media";
-import { FiArrowLeft, FiSettings } from "solid-icons/fi";
 import { createEffect, createSignal, on } from "solid-js";
-import { store } from "../../store";
 import { hasNonOverlayScrollbarY } from "../../utils/hasNonOverlayScrollbarY";
 import { onTransitionend } from "../../utils/onTransitionend";
+import ArrowLeftIcon from "../Icons/ArrowLeftIcon";
+import SettingsIcon from "../Icons/SettingsIcon";
 
 const TogglePanelButton = () => {
   const vwMax850px = createMediaQuery("(max-width:850px)");
@@ -27,9 +27,7 @@ const TogglePanelButton = () => {
     const header = document.getElementById("header")!;
     const headerNavEl = document.getElementById("header-nav")!;
     const copyJSXContainerEl = document.getElementById("copy-jsx-container")!;
-    const htmlEditorContainer = document.getElementById(
-      "html-editor-container"
-    )!;
+    const htmlEditorContainer = document.getElementById("html-editor-container")!;
     const jsxEditorContainer = document.getElementById("jsx-editor-container")!;
 
     return {
@@ -63,8 +61,7 @@ const TogglePanelButton = () => {
     const headerNavRight = headerNavEl.getBoundingClientRect().right;
     const configPanelWidth = settingsPanelEl.getBoundingClientRect().width;
     const toggleBtnWidth = toggleBtnEl.getBoundingClientRect().width;
-    const toggleBtnTextSpanWidth =
-      toggleBtnTextSpanEl.getBoundingClientRect().width;
+    const toggleBtnTextSpanWidth = toggleBtnTextSpanEl.getBoundingClientRect().width;
     const windowInnerWidth = window.innerWidth;
     const headerFakeStartingPosition = headerFakeBgWidth - windowInnerWidth;
     const headerNavEndPosition = windowInnerWidth - headerNavRight - navPadding;
@@ -242,22 +239,17 @@ const TogglePanelButton = () => {
         }
         openPanel();
       },
-      { defer: true }
-    )
+      { defer: true },
+    ),
   );
 
   createEffect(
     on(
       vwMax850px,
       (vwMax850px) => {
-        const {
-          configContainerEl,
-          splitEditorEl,
-          htmlEditorContainer,
-          jsxEditorContainer,
-        } = queryEls();
-        const configPanelHasScrollbar =
-          hasNonOverlayScrollbarY(configContainerEl);
+        const { configContainerEl, splitEditorEl, htmlEditorContainer, jsxEditorContainer } =
+          queryEls();
+        const configPanelHasScrollbar = hasNonOverlayScrollbarY(configContainerEl);
 
         if (!vwMax850px) {
           jsxEditorContainer.style.display = "block";
@@ -287,8 +279,8 @@ const TogglePanelButton = () => {
           splitEditorEl.style.paddingTop = "60px";
         }
       },
-      { defer: true }
-    )
+      { defer: true },
+    ),
   );
 
   return (
@@ -299,12 +291,12 @@ const TogglePanelButton = () => {
         ref={toggleBtnEl}
       >
         <div class="relative p-2">
-          <FiArrowLeft size={26} ref={toggleBtnArrowIconEl} />
+          <ArrowLeftIcon size={26} ref={toggleBtnArrowIconEl} />
           <div
             class="absolute inset-0px flex justify-center items-center opacity-0 origin-center"
             ref={toggleBtnSettingsIconEl}
           >
-            <FiSettings size={26} />
+            <SettingsIcon size={26} />
           </div>
         </div>
         <div class="p-2 pr-4 overflow-clip">

@@ -2,8 +2,8 @@ import { autoUpdate, flip, offset, shift } from "@floating-ui/dom";
 import { createResizeObserver } from "@solid-primitives/resize-observer";
 import Dismiss from "solid-dismiss";
 import { useFloating } from "solid-floating-ui";
-import { FiChevronDown } from "solid-icons/fi";
 import { Component, createSignal, For } from "solid-js";
+import ChevronDownIcon from "../Icons/ChevronDownIcon";
 
 const Select: Component<{
   name: string;
@@ -44,7 +44,7 @@ const Select: Component<{
       >
         <div>{props.selected}</div>
         <div class="ml-auto">
-          <FiChevronDown />
+          <ChevronDownIcon />
         </div>
       </button>
       <Dismiss

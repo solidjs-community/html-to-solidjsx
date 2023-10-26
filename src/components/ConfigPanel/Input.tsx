@@ -1,11 +1,4 @@
-import {
-  arrow,
-  autoUpdate,
-  computePosition,
-  flip,
-  offset,
-  shift,
-} from "@floating-ui/dom";
+import { arrow, autoUpdate, computePosition, flip, offset } from "@floating-ui/dom";
 import Dismiss from "solid-dismiss";
 import { useFloating } from "solid-floating-ui";
 import { Component, createSignal, Show } from "solid-js";
@@ -62,11 +55,7 @@ const Input: Component<{
         const floatingOffset = Math.sqrt(2 * arrowLen ** 2) / 2;
         computePosition(reference, floating, {
           placement: "bottom",
-          middleware: [
-            offset(floatingOffset),
-            flip(),
-            arrow({ element: arrowEl }),
-          ],
+          middleware: [offset(floatingOffset), flip(), arrow({ element: arrowEl })],
         }).then(({ middlewareData, placement, x, y }) => {
           const side = placement.split("-")[0];
 
@@ -85,9 +74,7 @@ const Input: Component<{
           if (middlewareData.arrow) {
             const { x, y } = middlewareData.arrow;
             const isTop = placement === "top";
-            const maskImage = `linear-gradient(${
-              isTop ? "315" : "135"
-            }deg, #000 calc(50% - ${
+            const maskImage = `linear-gradient(${isTop ? "315" : "135"}deg, #000 calc(50% - ${
               isTop ? "1" : "0.5"
             }px),transparent calc(50% - ${isTop ? "1" : "0.5"}px))`;
 
@@ -177,9 +164,7 @@ const Input: Component<{
             <div class="relative bg-white rounded-8px border-1 border-#444 shadow-black/70 shadow-lg dark:(bg-#444 border-#888) p-4 z-2">
               <p>
                 To use TABs, type{" "}
-                <code class="font-mono p-2px rounded-4px bg-black/10 dark:bg-black/50">
-                  \\t
-                </code>
+                <code class="font-mono p-2px rounded-4px bg-black/10 dark:bg-black/50">\\t</code>
                 <br />
               </p>
               <div class="flex gap-2 items-center">

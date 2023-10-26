@@ -1,14 +1,12 @@
 import { autoUpdate, flip, offset, shift } from "@floating-ui/dom";
 import Dismiss from "solid-dismiss";
 import { useFloating } from "solid-floating-ui";
-import { FiX } from "solid-icons/fi";
 import {
   createMemo,
   createSignal,
   For,
   JSX,
   ParentComponent,
-  Show,
 } from "solid-js";
 import { Dynamic } from "solid-js/web";
 import { setStore, store } from "../../store";

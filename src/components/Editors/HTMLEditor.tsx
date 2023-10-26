@@ -1,24 +1,17 @@
 import { Extension } from "@codemirror/state";
 import { html } from "@codemirror/lang-html";
-import {
-  EditorView,
-  lineNumbers,
-  highlightActiveLineGutter,
-} from "@codemirror/view";
-import {
-  createCodeMirror,
-  createEditorControlledValue,
-} from "solid-codemirror";
+import { EditorView, lineNumbers, highlightActiveLineGutter } from "@codemirror/view";
+import { createCodeMirror, createEditorControlledValue } from "solid-codemirror";
 import { createEffect, on, onMount } from "solid-js";
 import { setStore, store } from "../../store";
 import { vsCodeDark } from "../../editor/theme/dark";
 import { isDarkTheme } from "../Header/ThemeBtn";
 import { githubLight } from "../../editor/theme/light";
 import { editorBaseTheme } from "../../editor/editorBaseTheme";
-import { FiTrash2 } from "solid-icons/fi";
 import { isFirefox, isMobile } from "@solid-primitives/platform";
 import { useWindowSize } from "@solid-primitives/resize-observer";
 import { createMediaQuery } from "@solid-primitives/media";
+import TrashIcon from "../Icons/TrashIcon";
 
 const HTMLEditor = () => {
   const {
@@ -68,7 +61,7 @@ const HTMLEditor = () => {
         if (editor && document.activeElement === editor.contentDOM) return;
 
         vhHeight = document.documentElement.clientHeight;
-      })
+      }),
     );
 
     createEffect(
@@ -81,17 +74,15 @@ const HTMLEditor = () => {
             document.documentElement.style.height = "";
           }
         },
-        { defer: true }
-      )
+        { defer: true },
+      ),
     );
   }
 
   return (
     <div class="grid grid-rows-[min-content_1fr] h-full">
       <div class="flex justify-between py-2px text-#747474 bg-white border-b-2 border-#f1f1f1 dark:(text-#8C8C8C bg-dark border-#2E2E2E)">
-        <div class=" font-sans text-12px md:text-16px font-500 ml-20px">
-          HTML
-        </div>
+        <div class=" font-sans text-12px md:text-16px font-500 ml-20px">HTML</div>
         <button
           class="flex justify-center items-center h-full w-45px md:mr-0 hover:(text-#000 dark:text-light) transition"
           classList={{
@@ -100,7 +91,7 @@ const HTMLEditor = () => {
           onClick={onClear}
           aria-label="Clear HTML textbox"
         >
-          <FiTrash2 size={15} class="md:scale-125" />
+          <TrashIcon size={15} class="md:scale-125" />
         </button>
       </div>
       <div class="relative w-full overflow-auto">

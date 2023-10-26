@@ -1,4 +1,4 @@
-import { FiGithub } from "solid-icons/fi";
+import GithubIcon from "../Icons/GithubIcon";
 import { panelSize } from "../SettingsPanel/SettingsPanel";
 import SolidLogo from "../SolidLogo";
 import ThemeBtn from "./ThemeBtn";
@@ -28,7 +28,7 @@ const Header = () => {
                 aria-label="Github repository of html-to-solidjsx"
                 rel="noreferrer noopener"
               >
-                <FiGithub />
+                <GithubIcon />
               </a>
             </li>
           </ul>
