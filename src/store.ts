@@ -64,11 +64,11 @@ function getJSXText() {
 <br />
 <svg width="50" height="50" viewBox="0 0 13.2 13.2">
   <defs>
-    <linearGradient id="hi-a">
+    <linearGradient id="a">
       <stop offset="0" stop-color="#446b9e" />
     </linearGradient>
   </defs>
-  <circle cx="6.6" cy="6.6" r="6.6" fill="url(#hi-a)" />
+  <circle cx="6.6" cy="6.6" r="6.6" fill="url(#a)" />
 </svg>
 <style>
 {\`
