@@ -40,7 +40,7 @@
     "solid-start": "^0.3.6",
     "solid-start-static": "^0.3.6",
     "undici": "^5.15.1",
-    "unocss": "^0.49.2"
+    "unocss": "0.54.3"
   },
   "packageManager": "pnpm@8.6.0",
   "engines": {
