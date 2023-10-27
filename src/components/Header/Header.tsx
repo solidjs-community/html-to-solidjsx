@@ -13,7 +13,7 @@ const Header = () => {
         <div class="flex gap-2 md:gap-3 items-center h-full">
           <SolidLogo />
           <h1 class="text-14px dark:text-light font-500 md:text-18px w-min leading-1em opacity-80 font-sans">
-            <span class="whitespace-nowrap">HTML To</span> SolidJSX
+            <span class="whitespace-nowrap TEMP">HTML To</span> SolidJSX
           </h1>
         </div>
         <nav id="header-nav">

@@ -23,7 +23,7 @@ const SettingsPanel = () => {
       <div class="h-full grid grid-rows-[1fr] md:grid-rows-[min-content_1fr]">
         <div class="hidden md:block">
           <TogglePanelButton />
-          <div id="editor-settings" class="px-4">
+          <div id="editor-settings" class="px-4 TEMP">
             <h2 class="text-#888 font-bold">Editors</h2>
             <div class="py-3 dark:text-light text-13px lg:text-16px hover:bg-black/02 transition dark:hover:bg-white/02">
               <label class="flex items-center justify-between gap-2">

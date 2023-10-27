@@ -284,7 +284,7 @@ const TogglePanelButton = () => {
   );
 
   return (
-    <div class="mb-2">
+    <div class="mb-2 TEMP">
       <button
         class="relative flex items-center ml-auto dark:text-solid-mediumgray text-solid-gray/80 rounded-bl-8px hover:(text-black bg-#F2F2F2) dark:hover:(text-white bg-#333) transition-prop-[transform_250ms,color_150ms,background-color_150ms]"
         onClick={() => setClose(!close())}
@@ -301,7 +301,7 @@ const TogglePanelButton = () => {
         </div>
         <div class="p-2 pr-4 overflow-clip">
           <div ref={toggleBtnTextEl}>
-            <span class="inline-block" ref={toggleBtnTextSpanEl}>
+            <span class="inline-block TEMP" ref={toggleBtnTextSpanEl}>
               Hide
             </span>{" "}
             Settings

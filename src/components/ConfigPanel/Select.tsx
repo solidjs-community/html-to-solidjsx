@@ -43,7 +43,7 @@ const Select: Component<{
         ref={setReference}
       >
         <div>{props.selected}</div>
-        <div class="ml-auto">
+        <div class="ml-auto TEMP">
           <ChevronDownIcon />
         </div>
       </button>

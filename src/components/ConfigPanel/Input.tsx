@@ -169,7 +169,7 @@ const Input: Component<{
               </p>
               <div class="flex gap-2 items-center">
                 <div class="border-b-1 border-#ccc dark:(border-#666) flex-grow" />
-                <div class="opacity-70">Or</div>
+                <div class="opacity-70 TEMP">Or</div>
                 <div class="border-b-1 border-#ccc dark:(border-#666) flex-grow" />
               </div>
               <button

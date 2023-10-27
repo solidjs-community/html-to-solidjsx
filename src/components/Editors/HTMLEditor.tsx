@@ -91,7 +91,7 @@ const HTMLEditor = () => {
           onClick={onClear}
           aria-label="Clear HTML textbox"
         >
-          <TrashIcon size={15} class="md:scale-125" />
+          <TrashIcon size={15} class="md:scale-125 TEMP" />
         </button>
       </div>
       <div class="relative w-full overflow-auto">

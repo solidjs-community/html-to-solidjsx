@@ -1,13 +1,7 @@
 import { autoUpdate, flip, offset, shift } from "@floating-ui/dom";
 import Dismiss from "solid-dismiss";
 import { useFloating } from "solid-floating-ui";
-import {
-  createMemo,
-  createSignal,
-  For,
-  JSX,
-  ParentComponent,
-} from "solid-js";
+import { createMemo, createSignal, For, JSX, ParentComponent } from "solid-js";
 import { Dynamic } from "solid-js/web";
 import { setStore, store } from "../../store";
 import CopyJSXButton from "../CopyJSXButton";
@@ -125,10 +119,8 @@ const ActionsPanel = () => {
                           id === store.layout,
                       }}
                     >
-                      <div class="h-35px w-35px text-10px">
-                        {Icon && <Icon />}
-                      </div>
-                      <span class="text-16px">{text}</span>
+                      <div class="h-35px w-35px text-10px">{Icon && <Icon />}</div>
+                      <span class="text-16px TEMP">{text}</span>
                     </div>
                   </li>
                 )}

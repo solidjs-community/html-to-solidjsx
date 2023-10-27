@@ -10,9 +10,7 @@ const SplitEditor = () => {
       classList={{
         "grid-cols-[1fr_1fr]": store.layout === "columns",
         "grid-cols-[1fr]":
-          store.layout === "rows" ||
-          store.layout === "html" ||
-          store.layout === "jsx",
+          store.layout === "rows" || store.layout === "html" || store.layout === "jsx",
       }}
     >
       <div
@@ -27,7 +25,7 @@ const SplitEditor = () => {
       </div>
       <div
         id="jsx-editor-container"
-        class="md:border-t-0"
+        class="md:border-t-0 TEMP"
         classList={{
           hidden: store.layout === "html",
           "border-t-2 border-#CFCFCF dark:border-#555": store.layout === "rows",

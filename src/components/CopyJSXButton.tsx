@@ -26,7 +26,8 @@ const CopyJSXButton = () => {
       onClick={onCopyClick}
     >
       <div class="flex justify-between items-center gap-2 px-16px py-4px md:(px-20px py-6px) rounded-9px m-3px bg-solid-light text-#fff hover:(bg-#446b9e) transition">
-        <span class="whitespace-nowrap">{hasCopied() ? "Copied!" : "Copy JSX"}</span> <CopyIcon />
+        <span class="whitespace-nowrap TEMP">{hasCopied() ? "Copied!" : "Copy JSX"}</span>{" "}
+        <CopyIcon />
       </div>
     </button>
   );

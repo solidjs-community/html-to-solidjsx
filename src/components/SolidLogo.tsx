@@ -1,10 +1,6 @@
 const SolidLogo = () => {
   return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 166 155.3"
-      class="h-full"
-    >
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 166 155.3" class="h-full TEMP">
       <defs>
         <linearGradient
           id="solid-logo-a"
@@ -64,10 +60,7 @@ const SolidLogo = () => {
         opacity=".3"
         fill="url(#solid-logo-a)"
       />
-      <path
-        d="M52 35l-4 1c-17 5-22 21-13 35 10 13 31 20 48 15l62-21S92 26 52 35z"
-        fill="#518ac8"
-      />
+      <path d="M52 35l-4 1c-17 5-22 21-13 35 10 13 31 20 48 15l62-21S92 26 52 35z" fill="#518ac8" />
       <path
         d="M52 35l-4 1c-17 5-22 21-13 35 10 13 31 20 48 15l62-21S92 26 52 35z"
         opacity=".3"
