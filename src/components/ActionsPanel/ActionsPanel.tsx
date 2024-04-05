@@ -51,6 +51,7 @@ const ActionsPanel = () => {
     const item = list.find(({ id }) => id === store.layout);
     return item;
   });
+  //
 
   return (
     <div
