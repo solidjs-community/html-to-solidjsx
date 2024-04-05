@@ -129,6 +129,7 @@ const ActionsPanel = () => {
             </ul>
           </div>
         </Dismiss>
+        <div class="hidden"></div>
         <div>
           <label class="flex flex-col items-center text-10.5px font-bold text-#666 dark:(text-#888) cursor-pointer rounded-8px hover:text-#000 dark:hover:text-light transition">
             <span>Line Wrap</span>
