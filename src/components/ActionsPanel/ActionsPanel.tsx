@@ -55,10 +55,10 @@ const ActionsPanel = () => {
   return (
     <div
       id="actions-panel"
-      class="flex gap-6 items-center text-#666 px-12px py-4px bg-white border-y-2 border-#CFCFCF dark:(border-#555 bg-dark) md:hidden"
+      class="flex gap-[clamp(20px,6vw,24px)] items-center text-#666 px-12px py-4px bg-white border-y-2 border-#CFCFCF dark:(border-#555 bg-dark) md:hidden"
     >
       <TogglePanelButton />
-      <div class="flex items-center gap-6 flex-grow justify-end">
+      <div class="flex items-center gap-[clamp(20px,6vw,24px)] flex-grow justify-end">
         <button
           /* TODO */
           /* arbitrary-variant class [&_[data-icon-text]]:text-white fails to compile in unocss, so hardcoded the class in main.css */
