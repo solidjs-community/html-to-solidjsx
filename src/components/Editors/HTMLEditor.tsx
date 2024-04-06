@@ -51,6 +51,14 @@ const HTMLEditor = () => {
 
   const reconfigure = createExtension(extensions());
 
+  onMount(() => {
+    setTimeout(() => {
+      const { scrollDOM } = editorView();
+
+      scrollDOM.scrollTo({ top: 0 });
+    });
+  });
+
   createEffect(on(extensions, (extensions) => reconfigure(extensions)));
 
   // prevent resizing viewport height on firefox mobile when virtual keyboard opened
@@ -82,7 +90,9 @@ const HTMLEditor = () => {
   return (
     <div class="grid grid-rows-[min-content_1fr] h-full">
       <div class="flex justify-between py-2px text-#747474 bg-white border-b-2 border-#f1f1f1 dark:(text-#8C8C8C bg-dark border-#2E2E2E)">
-        <div class=" font-sans text-12px md:text-16px font-500 ml-20px">HTML</div>
+        <div class=" font-sans text-12px md:text-16px font-500 ml-20px">
+          HTML <span class="ml-2 opacity-75">Input</span>
+        </div>
         <button
           class="flex justify-center items-center h-full w-45px md:mr-0 hover:(text-#000 dark:text-light) transition"
           classList={{

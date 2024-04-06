@@ -85,8 +85,7 @@ const JSXEditor = () => {
 
   const insertHiddenFragments = (convertedJsx: string) => {
     // insert hidden fragments to keep jsx synthax highlighter to work properly
-    const hasWrapperNode =
-      store.config.wrapperNode === "none" && store.config.component === "none";
+    const hasWrapperNode = store.config.wrapperNode === "none" && store.config.component === "none";
     requestAnimationFrame(() => {
       setHiddenFragments(hasWrapperNode);
     });
@@ -100,10 +99,6 @@ const JSXEditor = () => {
     if (!store.config.prefixSVGIds) return convertedJsx;
     return namespaceSVGId(convertedJsx, store.config.prefixSVGIds);
   };
-
-  onMount(() => {
-    htmlToJSXConverter = new HTMLtoJSX(store.config);
-  });
 
   const updateEditorText = () => {
     let converted = htmlToJSXConverter.convert(store.htmlText);
@@ -123,6 +118,16 @@ const JSXEditor = () => {
     setCode(converted);
   };
 
+  onMount(() => {
+    htmlToJSXConverter = new HTMLtoJSX(store.config);
+
+    setTimeout(() => {
+      const { scrollDOM } = editorView();
+
+      scrollDOM.scrollTo({ top: 0 });
+    });
+  });
+
   createEffect(on(extensions, (extensions) => reconfigure(extensions)));
 
   createEffect(
@@ -132,8 +137,8 @@ const JSXEditor = () => {
         htmlToJSXConverter.config = { ...store.config };
         updateEditorText();
       },
-      { defer: true }
-    )
+      { defer: true },
+    ),
   );
 
   createEffect(
@@ -142,18 +147,19 @@ const JSXEditor = () => {
       () => {
         updateEditorText();
       },
-      { defer: true }
-    )
+      { defer: true },
+    ),
   );
 
   return (
     <div class="grid grid-rows-[min-content_1fr_min-content] h-full">
       <div class="py-2px dark:bg-dark bg-white border-b-2 border-#f1f1f1 dark:border-#2E2E2E">
         <div class="text-#747474 dark:text-#8C8C8C font-sans text-12px md:text-16px font-500 ml-20px">
-          JSX
+          JSX <span class="ml-2 opacity-75">Output</span>
         </div>
       </div>
       <div class="relative overflow-auto">
+        {/* TODO: On Mobile Chrome, the JSX editor font size is 14.3px instead of declared 13px */}
         <div
           class="absolute inset-0"
           ref={(el) => {
@@ -174,43 +180,28 @@ const JSXEditor = () => {
 };
 
 function namespaceSVGId(svg: string, namespace: string) {
-  svg = svg.replace(
-    /(<svg[^>]*>)([\s\S]*?)(<\/svg>)/g,
-    (_, startSvg, svgBody, endSvg) => {
-      if (!svgBody) return _;
+  svg = svg.replace(/(<svg[^>]*>)([\s\S]*?)(<\/svg>)/g, (_, startSvg, svgBody, endSvg) => {
+    if (!svgBody) return _;
 
-      svgBody = svgBody.replace(/id="(.*?)"/g, (_: string, p1: string) => {
-        return `id="${namespace}${p1}"`;
-      });
+    svgBody = svgBody.replace(/id="(.*?)"/g, (_: string, p1: string) => {
+      return `id="${namespace}${p1}"`;
+    });
 
-      svgBody = svgBody.replace(
-        /xlink:href="#(.*?)"/g,
-        (_: string, p1: string) => {
-          return `xlink:href="#${namespace}${p1}"`;
-        }
-      );
-      svgBody = svgBody.replace(
-        /mask="url\(#(.*?)\)"/g,
-        (_: string, p1: string) => {
-          return `mask="url(#${namespace}${p1})"`;
-        }
-      );
-      svgBody = svgBody.replace(
-        /fill="url\(#(.*?)\)"/g,
-        (_: string, p1: string) => {
-          return `fill="url(#${namespace}${p1})"`;
-        }
-      );
-      svgBody = svgBody.replace(
-        /filter="url\(#(.*?)\)"/g,
-        (_: string, p1: string) => {
-          return `filter="url(#${namespace}${p1})"`;
-        }
-      );
+    svgBody = svgBody.replace(/xlink:href="#(.*?)"/g, (_: string, p1: string) => {
+      return `xlink:href="#${namespace}${p1}"`;
+    });
+    svgBody = svgBody.replace(/mask="url\(#(.*?)\)"/g, (_: string, p1: string) => {
+      return `mask="url(#${namespace}${p1})"`;
+    });
+    svgBody = svgBody.replace(/fill="url\(#(.*?)\)"/g, (_: string, p1: string) => {
+      return `fill="url(#${namespace}${p1})"`;
+    });
+    svgBody = svgBody.replace(/filter="url\(#(.*?)\)"/g, (_: string, p1: string) => {
+      return `filter="url(#${namespace}${p1})"`;
+    });
 
-      return `${startSvg}${svgBody}${endSvg}`;
-    }
-  )!;
+    return `${startSvg}${svgBody}${endSvg}`;
+  })!;
 
   return svg;
 }
