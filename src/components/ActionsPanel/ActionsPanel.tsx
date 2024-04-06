@@ -55,14 +55,14 @@ const ActionsPanel = () => {
   return (
     <div
       id="actions-panel"
-      class="flex gap-[clamp(20px,6vw,24px)] items-center text-#666 px-12px py-4px bg-white border-y-2 border-#CFCFCF dark:(border-#555 bg-dark) md:hidden"
+      class="flex gap-[clamp(20px,6vw,24px)] items-center text-#888 px-12px py-4px bg-white border-y-2 border-#CFCFCF dark:(border-#555 bg-dark) md:hidden"
     >
       <TogglePanelButton />
       <div class="flex items-center gap-[clamp(20px,6vw,24px)] flex-grow justify-end">
         <button
           /* TODO */
           /* arbitrary-variant class [&_[data-icon-text]]:text-white fails to compile in unocss, so hardcoded the class in main.css */
-          class="flex justify-center items-center h-[42px] w-[42px] p-4px text-8px rounded-8px border-1 hover:text-#000 dark:hover:text-#999 transition [&_[data-icon-text]]:text-white dark:[&_[data-icon-text]]:text-white"
+          class="flex justify-center items-center h-[42px] w-[42px] p-4px text-8px rounded-8px border-1 hover:text-#000 dark:hover:text-#aaa transition [&_[data-icon-text]]:text-white dark:[&_[data-icon-text]]:text-white"
           classList={{
             "border-black bg-#eee dark:(bg-black border-#888)": open(),
             "border-transparent": !open(),
@@ -129,7 +129,7 @@ const ActionsPanel = () => {
           </div>
         </Dismiss>
         <div>
-          <label class="flex flex-col items-center text-10.5px font-bold text-#666 dark:(text-#888) cursor-pointer rounded-8px hover:text-#000 dark:hover:text-light transition">
+          <label class="flex flex-col items-center text-10.5px font-bold text-#666 dark:(text-#888) cursor-pointer rounded-8px hover:text-#000 dark:hover:text-#aaa transition">
             <span>Line Wrap</span>
             <input
               class="switch cursor-pointer"

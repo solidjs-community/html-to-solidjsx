@@ -107,7 +107,7 @@ const TogglePanelButton = () => {
 
   return (
     <button
-      class="flex justify-center items-center h-[40px] text-#999 dark:(text-#555) hover:text-#000 dark:hover:text-#999 transition"
+      class="flex justify-center items-center h-[40px] text-#999 dark:(text-#888) hover:text-#000 dark:hover:text-#aaa transition"
       onClick={() => setClose(!close())}
       aria-label={`${!close() ? "close" : "open"} configeration panel`}
       aria-expanded={!close()}
