@@ -1,21 +1,21 @@
 {
   "src/entry-client.css": {
-    "file": "assets/entry-client-782fd54a.css",
+    "file": "assets/entry-client-73a14202.css",
     "src": "src/entry-client.css"
   },
   "src/entry-client.tsx": {
     "css": [
-      "assets/entry-client-782fd54a.css"
+      "assets/entry-client-73a14202.css"
     ],
     "dynamicImports": [
       "src/routes/index.tsx"
     ],
-    "file": "assets/entry-client-caa46d9b.js",
+    "file": "assets/entry-client-ebe51c76.js",
     "isEntry": true,
     "src": "src/entry-client.tsx"
   },
   "src/routes/index.tsx": {
-    "file": "assets/index-2dda8f7b.js",
+    "file": "assets/index-99b2f187.js",
     "imports": [
       "src/entry-client.tsx"
     ],
