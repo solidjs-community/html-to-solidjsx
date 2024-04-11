@@ -21,24 +21,31 @@ const Input: Component<{
   const [show, setShow] = createSignal(true);
   let arrowEl!: HTMLDivElement;
 
-  let whiteSpaceOnly = true;
-
   const countWhiteSpace = () => {
-    let count = 0;
     const value = props.value;
+    const group: { char: string; count: number }[] = [];
+    if (value[0] != null) {
+      group.push({ char: value[0], count: 0 });
+    }
     value.split("").forEach((item) => {
-      if (item === " " || item === "\t") {
-        count++;
+      const groupItem = group.at(-1)!;
+      if (groupItem.char === item) {
+        groupItem.count = groupItem.count + 1;
+      } else {
+        group.push({ char: item, count: 1 });
       }
     });
-    if (count !== value.length) {
-      whiteSpaceOnly = false;
-      return;
-    }
-    whiteSpaceOnly = true;
+
     setShow(true);
 
-    return `${value.match(/\t/g) ? "\\t" : '" "'}(x${count})`;
+    return group
+      .map(({ count, char }) => {
+        if (char === "\t") char = "\\t";
+        if (char.match(/\s/)) char = "\\s";
+
+        return `${char}${count > 1 ? `(x${count})` : ""}`;
+      })
+      .reduce((a, c) => a + " " + c, "");
   };
 
   const onClickReplaceTab = () => {
@@ -129,6 +136,9 @@ const Input: Component<{
               value = value.replace(props.filter, "");
               e.currentTarget.value = value;
             }
+
+            value = value.replace(/\\s/g, " ");
+
             const result = value.replace(/\\t/g, "\t");
             if (result !== value) {
               value = result.replace(/[^\t]/g, "");
@@ -139,9 +149,9 @@ const Input: Component<{
           }}
           ref={setReference}
         />
-        <Show when={props.maskType && whiteSpaceOnly && show()}>
-          <div class="absolute inset-0px rounded-8px px-2 py-3px opacity-50 pointer-events-none">
-            {countWhiteSpace()}
+        <Show when={props.maskType && show()}>
+          <div class="absolute inset-0px rounded-8px px-2 py-3px bg-#fff dark:bg-#3B3B3B pointer-events-none">
+            <span class="opacity-50">{countWhiteSpace()}</span>
           </div>
         </Show>
       </div>
