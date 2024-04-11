@@ -135,6 +135,9 @@ const JSXEditor = () => {
       () => store.config[$TRACK as any as ConfigKey],
       () => {
         htmlToJSXConverter.config = { ...store.config };
+        if (htmlToJSXConverter.config.indent) {
+          htmlToJSXConverter.config.indent = htmlToJSXConverter.config.indent.replace(/\\/g, "");
+        }
         updateEditorText();
       },
       { defer: true },
