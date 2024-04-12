@@ -151,7 +151,7 @@ const Input: Component<{
         />
         <Show when={props.maskType && show()}>
           <div class="absolute inset-0px rounded-8px px-2 py-3px bg-#fff dark:bg-#3B3B3B pointer-events-none">
-            <span class="opacity-50">{countWhiteSpace()}</span>
+            <span class="opacity-50 TEMP">{countWhiteSpace()}</span>
           </div>
         </Show>
       </div>
